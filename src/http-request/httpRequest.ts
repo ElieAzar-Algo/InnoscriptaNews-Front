@@ -30,8 +30,8 @@ const httpRequest = async ({
   headers.append('Accept', 'application/json')
   token ? headers.append('Authorization', `Bearer ${token}`) : headers.append('Authorization', `NO AUTH`)
 
-  console.log("007 HEADER", headers)
-  console.log("007 BODY", body)
+//   console.log("007 HEADER", headers)
+//   console.log("007 BODY", body)
   try {
     const response = await fetch(url, {
       method,
@@ -40,16 +40,15 @@ const httpRequest = async ({
     })
     const data = (await response.json()) || null
 
-    console.log("007 DATA", data)
-
     if (data === null) return response
-
-    console.log("007 RESPONSE", response)
-
-    if (method !== 'GET') {
+    if (data.status == "Success" && method !== 'GET') {
       toast.success('Success!', {
         position: toast.POSITION.TOP_RIGHT,
       })
+    }else if(data.status == 400 && method !== 'GET'){
+        toast.error('Something Went Wrong!', {
+            position: toast.POSITION.TOP_RIGHT,
+          })
     }
     return data
   } catch (error) {
