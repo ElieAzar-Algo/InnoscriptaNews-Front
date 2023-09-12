@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import Form from '../components/common/Form';
 import { Pars } from '../components/common/pars.type';
 import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 var fields :Pars[] = [
     {
@@ -22,7 +24,7 @@ var fields :Pars[] = [
 ]
 
 function Login() {
-    
+
 
   return (
     <div>
@@ -31,6 +33,7 @@ function Login() {
             endpoint="/login"
             />
     </div>
+  
   );
 }
 

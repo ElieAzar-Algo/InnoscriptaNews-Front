@@ -9,13 +9,14 @@ import Home from './pages/Home';
 
 
 function App() {
+  const  token  = localStorage.getItem('innoscriptaToken')
   return (
        <Router>
           <ToastContainer />
         <AuthProvider>
             <Routes>
-              <Route path='/' element={<Login />} />
-              <Route path='/register' element={<Register />} />
+              <Route path='/' element={token?<Home />:<Login />} />
+              <Route path='/register' element={token?<Home />:<Register />} />
               <Route path="/home" element={<PrivateRoute/>} />
             </Routes>
         </AuthProvider>
@@ -25,7 +26,6 @@ function App() {
 
 function PrivateRoute() {
   const  token  = localStorage.getItem("innoscriptaToken")
-
   // if the user is authenticated (has a token in the localstorage) allow access to the route, otherwise, redirect to the login page
   return token ? <Home /> : <Navigate to="/" />
 }

@@ -23,20 +23,23 @@ const httpRequest = async ({
   if (query) {
     url += `?${new URLSearchParams(query)}`
   }
-
   // console.log('Endpoint in httpRequest',url)
   const headers = new Headers()
   headers.append('Content-Type', 'application/json')
-  headers.append('Accept', 'application/json')
+  headers.append('Accept', 'application/json')//
+  headers.append('Access-Control-Allow-Origin', "*")//Access-Control-Allow-Origin
   token ? headers.append('Authorization', `Bearer ${token}`) : headers.append('Authorization', `NO AUTH`)
+ 
+  body = body ? { body: JSON.stringify(body) } : {}
 
-//   console.log("007 HEADER", headers)
-//   console.log("007 BODY", body)
+  
+  console.log("007 HEADER", headers)
+  // console.log("007 BODY", body)
   try {
     const response = await fetch(url, {
       method,
       headers,
-      body: JSON.stringify(body),
+      ...body
     })
     const data = (await response.json()) || null
 
