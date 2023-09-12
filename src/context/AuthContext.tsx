@@ -19,6 +19,7 @@ export function useAuth() {
 // AuthProvider component to manage authentication state
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
+  console.log("TOKEN IN CNTEXT", token)
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>

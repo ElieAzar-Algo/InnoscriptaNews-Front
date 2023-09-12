@@ -1,9 +1,11 @@
 // import { Pars } from './form.type'
-import {FormContainer, Button, FormContentWrapper } from './form.style'
+import {FormContainer, FormContentWrapper } from './form.style'
 import TextField from '../TextField/index'
 import React, { useState } from 'react'
 import httpRequest from '../../../http-request/httpRequest'
 import { useAuth } from '../../../context/AuthContext'
+import Button from '../Button'
+import { useNavigate } from 'react-router-dom';
 
 interface FormProps {
   fields: any[]
@@ -17,7 +19,7 @@ const Form = ({fields, endpoint, method}:FormProps) => {
   const [formValues, setFormValues] = useState<{ [key: string]: any }>({});
   const [errors, setErrors] = useState([]);
   const { token, setToken } = useAuth();
-
+  const navigate = useNavigate();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -27,7 +29,7 @@ const Form = ({fields, endpoint, method}:FormProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
-  
+
     try {
       const response = await httpRequest({
         endpoint,
@@ -38,11 +40,14 @@ const Form = ({fields, endpoint, method}:FormProps) => {
       })
       if(response.status == 'Success'){
         const { data } = response
+        console.log(`succeeded auth reponse for ${endpoint} ---> `, data)
         setToken(data.token)
         localStorage.setItem("innoscriptaToken",data.token )
+        navigate('/home'); 
       }
       else if( response.status == 400)
       {
+        console.log(`failed auth reponse for ${endpoint} ---> `, response)
         setErrors(response.errors)
       }
     }catch(error){
@@ -64,7 +69,7 @@ const Form = ({fields, endpoint, method}:FormProps) => {
               </div>
         )}
       </FormContentWrapper>
-      <Button type="submit">Submit</Button>
+      <Button btnType="submit" label="Submit"/>
     </FormContainer>
   )
 }

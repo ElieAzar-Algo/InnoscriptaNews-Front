@@ -4,14 +4,6 @@ import { useAuth } from '../context/AuthContext';
 
 var fields :Pars[] = [
     {
-      id: 'fullName',
-      component:'TextField',
-      type: 'text',
-      name: 'fullName',
-      label: 'Full Name',
-      placeholder: 'Full Name',
-    },
-    {
       id: 'email',
       component:'TextField',
       type: 'text',
@@ -27,27 +19,19 @@ var fields :Pars[] = [
       label: 'Password',
       placeholder: 'Password',
     },
-    {
-      id: 'password_confirmation',
-      component:'TextField',
-      type: 'password',
-      name: 'password_confirmation',
-      label: 'Confirm Password',
-      placeholder: 'Confirm Password',
-    },
 ]
 
-function Register() {
+function Login() {
     
 
   return (
     <div>
       <Form fields={fields} 
             method="POST"
-            endpoint="/register"
+            endpoint="/login"
             />
     </div>
   );
 }
 
-export default Register;
+export default Login;

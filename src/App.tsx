@@ -1,25 +1,33 @@
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, Navigate } from 'react-router-dom';
 import './App.css';
-import Form from './components/common/Form';
 import Register from './pages/Register';
-import { AuthProvider } from './context/AuthContext';
+import Login from './pages/Login';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Home from './pages/Home';
+
 
 function App() {
   return (
-  
        <Router>
           <ToastContainer />
         <AuthProvider>
-          <div className="App">
             <Routes>
+              <Route path='/' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path="/home" element={<PrivateRoute/>} />
             </Routes>
-          </div>
         </AuthProvider>
     </Router>
   );
+}
+
+function PrivateRoute() {
+  const  token  = localStorage.getItem("innoscriptaToken")
+
+  // if the user is authenticated (has a token in the localstorage) allow access to the route, otherwise, redirect to the login page
+  return token ? <Home /> : <Navigate to="/" />
 }
 
 export default App;
