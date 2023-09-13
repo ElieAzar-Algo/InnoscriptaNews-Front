@@ -114,6 +114,14 @@ export const CardSubtitle = styled.div`
   color: #ef5a31;
 `
 
+
+export const CardSubDate = styled.div`
+  margin: 0;
+  padding: 0 0 10px 0;
+  font-size: 10px;
+  color: #808080 ;
+`
+
 export const CardDescription = styled.p`
   color: #666c74;
   font-size: 14px;

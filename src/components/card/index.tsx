@@ -1,45 +1,39 @@
 import {Card, 
         CardThumb, 
-        CardDate, 
-        CardDateDay,
-        CardDateMonth,
         CardBody,
         CardCategory,
         CardTitle,
         CardSubtitle,
         CardDescription,
         CardFooter,
-        Icon
+        Icon,
+        CardSubDate
     } from './card.style'
 
 
-function ArticleCard() {
+function ArticleCard({data}:{data:any}) {
+
+    const formattedDate = new Date(data.publishedAt).toLocaleDateString();
     return (
       <Card>
         <CardThumb>
-          <img src="http://lorempicsum.com/futurama/370/235/2" alt="Card Thumbnail" />
+          <img src={data.image_url} alt="Card Thumbnail" />
         </CardThumb>
-        <CardDate>
-          <CardDateDay>12</CardDateDay>
-          <CardDateMonth>Mai</CardDateMonth>
-        </CardDate>
         <CardBody>
           <CardCategory>
-            <a href="#">Photos</a>
+            <a href={data.article_url}>Photos</a>
           </CardCategory>
           <CardTitle>
-            <a href="#">Bender Should Not Be Allowed on TV</a>
+            <a href={data.article_url}>{data.title}</a>
           </CardTitle>
-          <CardSubtitle>A Head In The Polls</CardSubtitle>
+          <CardSubtitle>{data.source}</CardSubtitle>
+          <CardSubDate>{formattedDate}</CardSubDate>
           <CardDescription>
-            With a warning label this big, you know they gotta be fun! This is the worst part. The calm before the battle.
-            No! The cat shelter's on to me. Yes, I saw. You were doing well, until everyone died. Daylight and everything.
+          {data.description}
           </CardDescription>
         </CardBody>
         <CardFooter>
-          <Icon className="icon--time"><i className="fa fa-hourglass-o fa-lg" aria-hidden="true"></i></Icon>6 min
-          <Icon className="icon--comment"><i className="fa fa-commenting fa-lg"></i></Icon>
-          <a href="#">39 comment</a>
+        <span>{data.author}</span>
         </CardFooter>
       </Card>
     );

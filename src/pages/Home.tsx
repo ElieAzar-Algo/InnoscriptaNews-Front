@@ -24,13 +24,9 @@ function Home() {
       })
 
       console.log("007 ARTICLES RESPONSE", response)
-      // if(response.status == 'Success'){
-      //   const { data } = response
-      // }
-      // else if( response.status == 400)
-      // {
-        
-      // }
+      if(response){
+        setArticles(response);
+      }
     }catch(error){
       console.error('Error:', error);
     }
@@ -42,17 +38,9 @@ function Home() {
   return (
     <div>
     <CardContainer>
-        <ArticleCard/>
-      
-      
-        <ArticleCard/>
-       
-        <ArticleCard/>
-        <ArticleCard/>
-        <ArticleCard/>
-      
-      
-     
+      {articles.map((article:any)=>
+         <ArticleCard data = {article}/>
+      )}
     </CardContainer>
   </div>
   );
