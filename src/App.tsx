@@ -11,6 +11,7 @@ import Home from './pages/Home';
 function App() {
   const  token  = localStorage.getItem('innoscriptaToken')
   return (
+    <div className="innoscripta">
        <Router>
           <ToastContainer />
         <AuthProvider>
@@ -21,6 +22,7 @@ function App() {
             </Routes>
         </AuthProvider>
     </Router>
+  </div>
   );
 }
 

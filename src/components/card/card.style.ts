@@ -1,7 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
-// Keyframes for the card hover animation
 const cardHoverAnimation = keyframes`
   0% {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -12,15 +10,14 @@ const cardHoverAnimation = keyframes`
 `;
 
 export const Card = styled.article`
-  /* Remove the absolute positioning */
-  max-width: 370px;
+  max-width: 470px;
   margin: 8px;
   background-color: #fff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  display: inline-block; /* Display cards in a row */
-  vertical-align: top; /* Align cards to the top of the container */
-  width: calc(33.33% - 16px); /* Three cards per row with some spacing */
+  display: inline-block;
+  vertical-align: top;
+  width: calc(33.33% - 16px);
 
   a {
     color: inherit;
@@ -29,6 +26,14 @@ export const Card = styled.article`
 
   &:hover {
     animation: ${cardHoverAnimation} 0.3s ease;
+  }
+
+  @media (max-width: 1200px) {
+    width: calc(65% - 16px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; 
   }
 `
 
@@ -79,7 +84,7 @@ export const CardDateMonth = styled.span`
   display: block;
   font-size: 10px;
   text-transform: uppercase;
-`;
+`
 
 export const CardBody = styled.div`
   position: relative;
@@ -114,12 +119,11 @@ export const CardSubtitle = styled.div`
   color: #ef5a31;
 `
 
-
 export const CardSubDate = styled.div`
   margin: 0;
   padding: 0 0 10px 0;
   font-size: 10px;
-  color: #808080 ;
+  color: #808080;
 `
 
 export const CardDescription = styled.p`
@@ -129,7 +133,7 @@ export const CardDescription = styled.p`
 `
 
 export const CardFooter = styled.footer`
-  position: absolute;
+  position: relative;
   bottom: 20px;
   left: 26px;
   right: 26px;
@@ -154,5 +158,3 @@ export const IconTime = styled.span`
   height: 17px;
   margin-top: -6px;
 `
-
-

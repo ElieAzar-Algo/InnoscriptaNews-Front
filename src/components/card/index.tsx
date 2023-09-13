@@ -13,6 +13,7 @@ import {Card,
 
 function ArticleCard({data}:{data:any}) {
 
+
     const formattedDate = new Date(data.publishedAt).toLocaleDateString();
     return (
       <Card>

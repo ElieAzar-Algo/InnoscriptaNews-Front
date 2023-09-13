@@ -1,20 +1,28 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+width: 80%;
+margin-top:5%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-left: 2%;
 
-export const Card = styled.div`
-  width: calc(33.33% - 16px); /* Three cards per row with some spacing */
-  margin: 8px;
+@media (max-width: 1200px) {
+  justify-content: space-around;
+}
 
-  @media (max-width: 768px) {
-    width: 100%; /* One card per row on mobile screens */
-  }
+@media (max-width: 768px) {
+  flex-direction: column; 
+  align-items: center; 
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+`
+
+export const LayoutContainer = styled.div`
+
+
 `

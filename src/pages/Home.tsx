@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import ArticleCard from '../components/card';
 import Form from '../components/common/Form';
-import Navbar from '../components/header/Navbar';
+import Navbar from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
-import {CardContainer, Card } from './styles/home.style'
+import {CardContainer, LayoutContainer } from './styles/home.style'
 import httpRequest from '../http-request/httpRequest';
+import SideMenu from '../components/SideMenu';
 
 
 function Home() {
@@ -36,13 +37,15 @@ function Home() {
       getArticles()
     },[])
   return (
-    <div>
-    <CardContainer>
-      {articles.map((article:any)=>
-         <ArticleCard data = {article}/>
-      )}
-    </CardContainer>
-  </div>
+    <LayoutContainer>
+      <Navbar/>
+      <CardContainer>
+        {articles.map((article:any)=>
+          <ArticleCard key={article.id} data = {article}/>
+        )}
+      </CardContainer>
+      <SideMenu/>
+  </LayoutContainer>
   );
 }
 
