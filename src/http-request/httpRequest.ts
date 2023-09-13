@@ -6,13 +6,16 @@ interface Req {
   token?: string
   body?: any
   query?: string
+  lookupQuery?: Record<string, string>;
 }
+
 const httpRequest = async ({
   endpoint,
   method = 'POST',
   token = '',
   body = null,
   query = '',
+  lookupQuery = {},
 
 }: Req) => {
   let url = process.env.NODE_ENV === 'production' ? 
@@ -20,10 +23,19 @@ const httpRequest = async ({
     : 
         `${process.env.REACT_APP_API_DEV_URL}/api${endpoint}`
 
-  if (query) {
-    url += `?${new URLSearchParams(query)}`
+
+  console.log(`Query ${query} & lookupQuery  ${lookupQuery} in httpRequest 007`)
+  let questionSet = false
+   if(query) {
+    questionSet?url += `&${new URLSearchParams(query)}`:url += `?${new URLSearchParams(query)}`
+    questionSet=true
   }
-  // console.log('Endpoint in httpRequest',url)
+
+  if('q' in lookupQuery) {
+    questionSet?url += `&${new URLSearchParams(lookupQuery)}`: url += `?${new URLSearchParams(lookupQuery)}`
+    questionSet=true
+  }
+  console.log('Endpoint in httpRequest 007',url)
   const headers = new Headers()
   headers.append('Content-Type', 'application/json')
   headers.append('Accept', 'application/json')//

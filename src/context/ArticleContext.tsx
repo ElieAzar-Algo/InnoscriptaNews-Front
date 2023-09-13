@@ -17,8 +17,13 @@ type Article = {
 };
 
 type ArticleContextType = {
-  articles: Article[];
+  articles: Article[]
   setArticles: React.Dispatch<React.SetStateAction<Article[]>>
+  searchCtx:string | null
+  setSearchCtx: (searchCtx: string | null) => void
+  filterCtx: string | null
+  setFilterCtx: (filterCtx: string | null) => void
+
 };
 
 const ArticleContext = createContext<ArticleContextType | undefined>(undefined)
@@ -37,9 +42,15 @@ type ArticleProviderProps = {
 
 export const ArticleProvider = ({ children }: ArticleProviderProps) => {
   const [articles, setArticles] = useState<Article[]>([])
+  const [searchCtx, setSearchCtx] = useState<string | null>(null)
+  const [filterCtx, setFilterCtx] = useState<string | null>(null)
 
   return (
-    <ArticleContext.Provider value={{ articles, setArticles }}>
+    <ArticleContext.Provider value={{ 
+      articles, setArticles,
+      searchCtx, setSearchCtx,
+      filterCtx, setFilterCtx,
+      }}>
       {children}
     </ArticleContext.Provider>
   );

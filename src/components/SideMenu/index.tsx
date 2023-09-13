@@ -29,11 +29,11 @@ type Article = {
 };
 
 const SideMenu = () =>{
+  const {articles,searchCtx, setArticles, setFilterCtx } = useArticleContext()
   const [fromDate, setFromDate] = useState('')
   const [toDate, setToDate] = useState('')
   const [selectedAuthor, setSelectedAuthor] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('');
-  const {articles, setArticles } = useArticleContext()
   const [authors, setAuthors] = useState<string[]>([])
   const [categories, setCategories] = useState<string[]>([])
   const token = localStorage.getItem('innoscriptaToken')
@@ -99,11 +99,15 @@ const SideMenu = () =>{
       const response = await httpRequest({
         endpoint: '/article',
         method: 'GET',
-        query: queryParams.toString(), // Convert query parameters to a string
+        query: queryParams.toString(),
+        lookupQuery:searchCtx? {
+          q: searchCtx, 
+        }:{},
         token:token? token : undefined
       });
 
       if (response) {
+        setFilterCtx(queryParams.toString())
         setArticles(response);
       }
     } catch (error) {
