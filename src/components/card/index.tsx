@@ -22,7 +22,7 @@ function ArticleCard({data}:{data:any}) {
         </CardThumb>
         <CardBody>
           <CardCategory>
-            <a href={data.article_url}>Photos</a>
+            <a href={data.article_url}>{data.category}</a>
           </CardCategory>
           <CardTitle>
             <a href={data.article_url}>{data.title}</a>

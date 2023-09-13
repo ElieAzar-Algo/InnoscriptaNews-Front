@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ArticleCard from '../components/card';
-import Form from '../components/common/Form';
 import Navbar from '../components/Navbar';
-import { useAuth } from '../context/AuthContext';
 import {CardContainer, LayoutContainer } from './styles/home.style'
 import httpRequest from '../http-request/httpRequest';
 import SideMenu from '../components/SideMenu';
+import { ArticleProvider, useArticleContext } from '../context/ArticleContext';
 
 
 function Home() {
     const token = localStorage.getItem('innoscriptaToken')
-    const[articles, setArticles] = useState([])
+    // const[articles, setArticles] = useState([])
+    const {articles,  setArticles } = useArticleContext();
 
   const getArticles = async () =>
   {

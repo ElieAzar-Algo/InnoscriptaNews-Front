@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // Styled components
 export const SidebarWrapper = styled.div`
   position: fixed;
-  top: 5%;
+  top: 8%;
   right: 0;
   height: 100%;
   width: 15%;
@@ -13,6 +13,10 @@ export const SidebarWrapper = styled.div`
   padding: 20px;
   box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
+  @media only screen and (min-width: 1800px) {
+    top: 5%;
+  }
 
   @media only screen and (max-width: 768px) {
     width: 95%;

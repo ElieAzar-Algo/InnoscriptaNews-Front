@@ -6,6 +6,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Home from './pages/Home';
+import { ArticleProvider } from './context/ArticleContext';
 
 
 function App() {
@@ -15,11 +16,13 @@ function App() {
        <Router>
           <ToastContainer />
         <AuthProvider>
+        <ArticleProvider>
             <Routes>
               <Route path='/' element={token?<Home />:<Login />} />
               <Route path='/register' element={token?<Home />:<Register />} />
               <Route path="/home" element={<PrivateRoute/>} />
             </Routes>
+        </ArticleProvider>
         </AuthProvider>
     </Router>
   </div>
