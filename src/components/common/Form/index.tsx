@@ -40,14 +40,14 @@ const Form = ({fields, endpoint, method}:FormProps) => {
       })
       if(response.status == 'Success'){
         const { data } = response
-        console.log(`succeeded auth reponse for ${endpoint} ---> `, data)
+        // console.log(`succeeded auth reponse for ${endpoint} ---> `, data)
         setToken(data.token)
         localStorage.setItem("innoscriptaToken",data.token )
-        navigate('/home'); 
+        endpoint == "/login"? navigate('/home'):navigate('/preference') 
       }
       else if( response.status == 400)
       {
-        console.log(`failed auth reponse for ${endpoint} ---> `, response)
+        // console.log(`failed auth reponse for ${endpoint} ---> `, response)
         setErrors(response.errors)
       }
     }catch(error){

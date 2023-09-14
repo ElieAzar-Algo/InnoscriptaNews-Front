@@ -45,7 +45,7 @@ const httpRequest = async ({
   body = body ? { body: JSON.stringify(body) } : {}
 
   
-  console.log("007 HEADER", headers)
+  // console.log("007 HEADER", headers)
   // console.log("007 BODY", body)
   try {
     const response = await fetch(url, {

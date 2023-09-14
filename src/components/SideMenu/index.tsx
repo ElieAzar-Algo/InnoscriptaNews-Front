@@ -30,12 +30,12 @@ type Article = {
 
 const SideMenu = () =>{
   const {articles,searchCtx, setArticles, setFilterCtx } = useArticleContext()
+  const [categories, setCategories] = useState<string[]>([])
   const [fromDate, setFromDate] = useState('')
+  const [authors, setAuthors] = useState<string[]>([])
   const [toDate, setToDate] = useState('')
   const [selectedAuthor, setSelectedAuthor] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [authors, setAuthors] = useState<string[]>([])
-  const [categories, setCategories] = useState<string[]>([])
   const token = localStorage.getItem('innoscriptaToken')
 
   
@@ -115,12 +115,6 @@ const SideMenu = () =>{
     }
   };
 
-  const printall= ()=>{
-    console.log("fromDate 007 ", fromDate)
-    console.log("toDate 007 ", toDate)
-    console.log("selectedAuthor 007 ", selectedAuthor)
-    console.log("selectedCategory 007 ", selectedCategory)
-  }
   return (
     <SidebarWrapper>
       <SidebarTitle>Filters</SidebarTitle>
@@ -176,7 +170,6 @@ const SideMenu = () =>{
       </AuthorsSelect>
     </AuthorsDropdown>
     <button onClick={handleFilterChange}>Apply Filters</button>
-    <button onClick={printall}>print</button>
     </SidebarWrapper>
   );
 }

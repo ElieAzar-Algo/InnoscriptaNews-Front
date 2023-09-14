@@ -6,6 +6,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Home from './pages/Home';
+import Preference from './pages/Preference';
 import { ArticleProvider } from './context/ArticleContext';
 
 
@@ -20,7 +21,8 @@ function App() {
             <Routes>
               <Route path='/' element={token?<Home />:<Login />} />
               <Route path='/register' element={token?<Home />:<Register />} />
-              <Route path="/home" element={<PrivateRoute/>} />
+              <Route path="/home" element={<PrivateRoute component={Home} />} />
+              <Route path="/preference" element={<PrivateRoute component={Preference} />} />
             </Routes>
         </ArticleProvider>
         </AuthProvider>
@@ -29,10 +31,16 @@ function App() {
   );
 }
 
-function PrivateRoute() {
-  const  token  = localStorage.getItem("innoscriptaToken")
-  // if the user is authenticated (has a token in the localstorage) allow access to the route, otherwise, redirect to the login page
-  return token ? <Home /> : <Navigate to="/" />
+interface PrivateRouteProps {
+  component: React.ComponentType<any>;
+  [key: string]: any;
+}
+
+function PrivateRoute({ component: Component, ...rest }:PrivateRouteProps) {
+  const token = localStorage.getItem("innoscriptaToken");
+
+  // Render the specified component if the user is authenticated, otherwise, redirect to the login page
+  return token ? <Component {...rest} /> : <Navigate to="/" />;
 }
 
 export default App;

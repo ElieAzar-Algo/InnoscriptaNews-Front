@@ -14,17 +14,13 @@ function Home() {
 
   const getArticles = async () =>
   {
-    console.log("007 yo1 token", token)
-    
     try {
-      console.log("007 yo2")
       const response = await httpRequest({
         endpoint:'/article',
         method:'GET',
         token:token? token : undefined
       })
 
-      console.log("007 ARTICLES RESPONSE", response)
       if(response){
         setArticles(response);
       }
