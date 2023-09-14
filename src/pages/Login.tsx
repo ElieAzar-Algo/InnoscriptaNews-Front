@@ -1,5 +1,6 @@
 import Form from '../components/common/Form';
 import { Pars } from '../components/common/pars.type';
+import { Container } from './styles/login.style'
 
 var fields :Pars[] = [
     {
@@ -24,12 +25,13 @@ function Login() {
 
 
   return (
-    <div>
+    <Container>
+      <h1> Login </h1>
       <Form fields={fields} 
             method="POST"
             endpoint="/login"
             />
-    </div>
+    </Container>
   
   );
 }

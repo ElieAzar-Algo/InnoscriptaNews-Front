@@ -1,6 +1,8 @@
 import Form from '../components/common/Form';
 import { Pars } from '../components/common/pars.type';
 import { useAuth } from '../context/AuthContext';
+import { Container } from './styles/login.style'
+
 
 var fields :Pars[] = [
     {
@@ -41,12 +43,14 @@ function Register() {
     
 
   return (
-    <div>
+    <Container>
+      <h1> Register </h1>
+
       <Form fields={fields} 
             method="POST"
             endpoint="/register"
             />
-    </div>
+    </Container>
   );
 }
 

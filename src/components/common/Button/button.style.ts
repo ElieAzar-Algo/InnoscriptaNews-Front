@@ -8,9 +8,9 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  right: 20px;
+  margin:20%;
+  width:90%;
   &:hover {
     opacity: 0.7;
     transition: 0.1s ease-in-out;

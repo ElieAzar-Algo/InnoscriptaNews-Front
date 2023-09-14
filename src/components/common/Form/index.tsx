@@ -1,11 +1,12 @@
 // import { Pars } from './form.type'
-import {FormContainer, FormContentWrapper } from './form.style'
+import {FormContainer, FormContentWrapper, InputLabel, StyledLink} from './form.style'
 import TextField from '../TextField/index'
 import React, { useState } from 'react'
 import httpRequest from '../../../http-request/httpRequest'
 import { useAuth } from '../../../context/AuthContext'
 import Button from '../Button'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 interface FormProps {
   fields: any[]
@@ -20,6 +21,10 @@ const Form = ({fields, endpoint, method}:FormProps) => {
   const [errors, setErrors] = useState([]);
   const { token, setToken } = useAuth();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const currentRoute = location.pathname;
+  // console.log("007 current location route",currentRoute)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -60,7 +65,7 @@ const Form = ({fields, endpoint, method}:FormProps) => {
 
         {fields.map((field:any) =>
               <div key={field.id}>
-                <label>{field.label}</label>
+                <InputLabel>{field.InputLabel}</InputLabel>
                 <TextField 
                   pars={field}
                   value={formValues[field.name] || ''}
@@ -68,8 +73,15 @@ const Form = ({fields, endpoint, method}:FormProps) => {
                 />
               </div>
         )}
+        <Button btnType="submit" label="Submit"/>
+        {
+          currentRoute=='/register'?
+          <Link  to="/">Login</Link>:
+          <Link  to="/register">Register</Link>
+        }
       </FormContentWrapper>
-      <Button btnType="submit" label="Submit"/>
+      
+      
     </FormContainer>
   )
 }
