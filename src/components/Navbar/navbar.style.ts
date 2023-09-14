@@ -24,6 +24,13 @@ export const BrandLink = styled.a`
   color: white;
 `
 
+export const BrandImg = styled.img`
+border-radius:120%;
+width:36%;
+height:36%;
+
+`
+
 export const NavForm = styled.form`
   display: flex;
   align-items: center;

@@ -62,7 +62,11 @@ const Form = ({fields, endpoint, method}:FormProps) => {
   return (
     <FormContainer onSubmit={handleSubmit}>
       <FormContentWrapper>
-
+        {
+          currentRoute=='/register'?
+          <h1 >Register</h1>:
+          <h1>Login</h1>
+        }
         {fields.map((field:any) =>
               <div key={field.id}>
                 <InputLabel>{field.InputLabel}</InputLabel>
@@ -76,7 +80,7 @@ const Form = ({fields, endpoint, method}:FormProps) => {
         <Button btnType="submit" label="Submit"/>
         {
           currentRoute=='/register'?
-          <Link  to="/">Login</Link>:
+          <Link to="/">Login</Link>:
           <Link  to="/register">Register</Link>
         }
       </FormContentWrapper>

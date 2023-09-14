@@ -44,7 +44,6 @@ function Register() {
 
   return (
     <Container>
-      <h1> Register </h1>
 
       <Form fields={fields} 
             method="POST"

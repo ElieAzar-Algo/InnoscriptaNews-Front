@@ -1,6 +1,6 @@
 import Form from '../components/common/Form';
 import { Pars } from '../components/common/pars.type';
-import { Container } from './styles/login.style'
+import { Container, Title} from './styles/login.style'
 
 var fields :Pars[] = [
     {
@@ -26,7 +26,7 @@ function Login() {
 
   return (
     <Container>
-      <h1> Login </h1>
+      <Title>INNOSCRIPTA NEWS</Title>
       <Form fields={fields} 
             method="POST"
             endpoint="/login"

@@ -9,6 +9,7 @@ import {
   FormLabel,
   NavList,
   NavItem,
+  BrandImg,
 } from './navbar.style'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -57,7 +58,9 @@ const Navbar = () =>{
   return (
     <NavbarWrapper>
       <NavbarContainer>
-        <BrandLink href="index.php">Logo</BrandLink>
+        <BrandLink>
+          <BrandImg src={process.env.PUBLIC_URL + '/Ilogo.png'} alt="Logo"/>
+        </BrandLink>
         <NavForm onSubmit={handleSearch}>
           <FormLabel htmlFor="search">Search</FormLabel>
           <FormInput 

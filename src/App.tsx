@@ -27,6 +27,7 @@ function App() {
         </ArticleProvider>
         </AuthProvider>
     </Router>
+
   </div>
   );
 }

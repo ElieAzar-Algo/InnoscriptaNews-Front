@@ -20,5 +20,20 @@ export const Container = styled.div`
     }
 `
 
+export const Title = styled.div`
+    
+        fill-opacity: 0.5;
+        font-size: 100px;
+        font-family: cursive;
+        font-style: oblique;
+        font-kerning: initial;
+        color: black;
+        opacity: 0.5;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 35px;
+
+          }
+`
 
 
