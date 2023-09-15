@@ -23,7 +23,7 @@ export const Container = styled.div`
 export const Title = styled.div`
     
         fill-opacity: 0.5;
-        font-size: 100px;
+        font-size: 60px;
         font-family: cursive;
         font-style: oblique;
         font-kerning: initial;

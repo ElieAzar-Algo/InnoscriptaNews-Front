@@ -10,6 +10,11 @@ export const FormContainer = styled.form`
   flex-direction: column;
 
 `
+export const ErrorMessage = styled.span`
+    font-size: smaller;
+    color: red;
+    position: absolute;
+`
 
 export const FormContentWrapper = styled.div`
   background-color: white;

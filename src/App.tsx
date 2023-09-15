@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="innoscripta">
        <Router>
-          <ToastContainer />
+          <ToastContainer/>
         <AuthProvider>
         <ArticleProvider>
             <Routes>
@@ -27,7 +27,6 @@ function App() {
         </ArticleProvider>
         </AuthProvider>
     </Router>
-
   </div>
   );
 }

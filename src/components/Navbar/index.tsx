@@ -12,7 +12,7 @@ import {
   BrandImg,
 } from './navbar.style'
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import httpRequest from '../../http-request/httpRequest';
 import { useArticleContext } from '../../context/ArticleContext';
 
@@ -24,8 +24,8 @@ const Navbar = () =>{
   const [searchKeyword, setSearchKeyword] = useState('');
   const token =localStorage.getItem('innoscriptaToken')
 
-
-  const logout = () =>{
+  const logout = (e:any) =>{
+    e.preventDefault();
     localStorage.removeItem('innoscriptaToken')
     navigate('/');
   }
@@ -59,7 +59,7 @@ const Navbar = () =>{
     <NavbarWrapper>
       <NavbarContainer>
         <BrandLink>
-          <BrandImg src={process.env.PUBLIC_URL + '/Ilogo.png'} alt="Logo"/>
+          <BrandImg src={'/Ilogo.png'} alt="Logo"/>
         </BrandLink>
         <NavForm onSubmit={handleSearch}>
           <FormLabel htmlFor="search">Search</FormLabel>
@@ -79,7 +79,7 @@ const Navbar = () =>{
           <Link to="/home">Home</Link>
           </NavItem> 
           <NavItem>
-            <a onClick={logout}>Log Out</a>
+            <Link to="/" onClick={logout}>Logout</Link>
           </NavItem>
         </NavList>
       </NavbarContainer>

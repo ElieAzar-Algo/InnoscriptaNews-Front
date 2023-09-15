@@ -10,7 +10,7 @@ export const NavbarWrapper = styled.div`
   z-index: 100;
   `
   
-  export const NavbarContainer = styled.div`
+export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,9 +25,9 @@ export const BrandLink = styled.a`
 `
 
 export const BrandImg = styled.img`
-border-radius:120%;
-width:36%;
-height:36%;
+border-radius:50%;
+width:50px;
+height:50px;
 
 `
 
