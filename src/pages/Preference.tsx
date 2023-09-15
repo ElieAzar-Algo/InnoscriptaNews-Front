@@ -3,12 +3,15 @@ import {
     Container,
     PreferenceGroup,
     Dropdown,
-    AddButton,
-    SubmitButton
+    SelectGroup,
+    SelectLabel,
+    TitleText
 } from './styles/preference.style'
 import { useArticleContext } from '../context/ArticleContext';
 import httpRequest from '../http-request/httpRequest';
 import { useNavigate } from 'react-router-dom';
+import Button from '../components/common/Button'
+
 
 type Preference = {
     source: string;
@@ -124,51 +127,65 @@ type Preference = {
 
       return (
         <Container>
+          <TitleText>Choose up to 3 preference groups</TitleText>
           {preferences.map((pref, index) => (
             <PreferenceGroup key={index}>
-              <Dropdown
-                value={pref.source}
-                onChange={(e) =>
-                  handlePreferenceChange(index, 'source', e.target.value)
-                }
-              >
-                <option value="">Select Source</option>
-                {sources.map((source, index) => (
-                  <option key={index} value={source}>
-                    {source}
-                  </option>
-                ))}
-              </Dropdown>
-              <Dropdown
-                value={pref.author}
-                onChange={(e) =>
-                  handlePreferenceChange(index, 'author', e.target.value)
-                }
-              >
-                <option value="">Select Author</option>
-                {authors.map((author, index) => (
-                  <option key={index} value={author}>
-                    {author}
-                  </option>
-                ))}
-              </Dropdown>
-              <Dropdown
-                value={pref.category}
-                onChange={(e) =>
-                  handlePreferenceChange(index, 'category', e.target.value)
-                }
-              >
-                <option value="">Select Category</option>
-                {categories.map((category, index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </Dropdown>
+
+              <SelectGroup>
+                <SelectLabel>Source</SelectLabel>
+                <Dropdown
+                  value={pref.source}
+                  onChange={(e) =>
+                    handlePreferenceChange(index, 'source', e.target.value)
+                  }
+                >
+                  <option value="">Select Source</option>
+                  {sources.map((source, index) => (
+                    <option key={index} value={source}>
+                      {source}
+                    </option>
+                  ))}
+                </Dropdown>
+              </SelectGroup>
+
+              <SelectGroup>
+                <SelectLabel>Author</SelectLabel>
+                <Dropdown
+                  value={pref.author}
+                  onChange={(e) =>
+                    handlePreferenceChange(index, 'author', e.target.value)
+                  }
+                >
+                  <option value="">Select Author</option>
+                  {authors.map((author, index) => (
+                    <option key={index} value={author}>
+                      {author}
+                    </option>
+                  ))}
+                </Dropdown>
+              </SelectGroup>
+
+              <SelectGroup>
+                <SelectLabel>Category</SelectLabel>
+                <Dropdown
+                  value={pref.category}
+                  onChange={(e) =>
+                    handlePreferenceChange(index, 'category', e.target.value)
+                  }
+                >
+                  <option value="">Select Category</option>
+                  {categories.map((category, index) => (
+                    <option key={index} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </Dropdown>
+              </SelectGroup>
+
             </PreferenceGroup>
           ))}
-          <AddButton onClick={handleAddPreference}>Add Preference</AddButton>
-          <SubmitButton onClick={submitPreferences}>Submit Preferences</SubmitButton>
+          <Button label="Add Preference" onClick={handleAddPreference}></Button>
+          <Button label="Submit Preferences" onClick={submitPreferences}></Button>
         </Container>
       );
     };

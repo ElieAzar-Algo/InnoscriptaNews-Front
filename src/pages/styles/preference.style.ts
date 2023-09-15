@@ -9,19 +9,39 @@ export const Container = styled.div`
 `;
 
 export const PreferenceGroup = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+    flex-direction: row;
+    margin-top:1%
+
+`;
+
+export const SelectGroup = styled.div`
   display: flex;
-  margin-top: 10px;
-`;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
 
+`
+export const TitleText =styled.h2`
+margin-top:5%;
+align-items: center;
+
+`
+export const SelectLabel = styled.label`
+  font-size:larger;
+`
 export const Dropdown = styled.select`
-  margin-right: 10px;
-`;
-
-export const AddButton = styled.button`
-  margin-top: 10px;
-`;
-
-
-export const SubmitButton = styled.button`
-  margin-top: 10px;
-`;
+  position: relative;
+  width: 100%;
+  padding:5px;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #60666d;
+`

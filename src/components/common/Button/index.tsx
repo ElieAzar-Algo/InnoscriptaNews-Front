@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from './button.style'
 
-const TextField = ({btnType, label}: {btnType:string, label:string}) => {
+const TextField = ({btnType, label, onClick}: {btnType?:string, label:string, onClick?:any}) => {
  
   return (
     <>          
@@ -9,7 +9,7 @@ const TextField = ({btnType, label}: {btnType:string, label:string}) => {
             btnType == 'submit'?
             <Button type="submit">{label}</Button>
             :
-            <Button >{label}</Button>
+            <Button onClick={onClick}>{label}</Button>
         }
     </>
   )
